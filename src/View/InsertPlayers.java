@@ -5,9 +5,13 @@
  */
 package View;
 
+import Model.AppManager;
+import Model.Player;
+import View.twoPlayer.GameWindowTwo;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -16,6 +20,7 @@ import javax.swing.JTextField;
  */
 public class InsertPlayers extends javax.swing.JDialog {
     private int numberOfPlayers;
+    private java.awt.Frame parent;
     /**
      * Creates new form InsertPlayers
      */
@@ -23,6 +28,7 @@ public class InsertPlayers extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.numberOfPlayers = numberOfPlayers;
+        this.parent = parent;
         init();
     }
 
@@ -85,7 +91,21 @@ public class InsertPlayers extends javax.swing.JDialog {
             }
 
             private void jButton1ActionPerformed(ActionEvent evt) {
+               String player1name = txtPlayer1Two.getText();
+               String player2name = txtPlayer2Two.getText();
                
+               if(player1name.isEmpty() || player2name.isEmpty()){
+                   showError(1);
+               }else{
+                   Player player1 = new Player(player1name);
+                   Player player2= new Player(player2name);
+                   
+                   AppManager.INSTANCE.addPlayer(player1);
+                   AppManager.INSTANCE.addPlayer(player2);
+                   
+                   GameWindowTwo windowTwo = new GameWindowTwo(parent, true);
+                   windowTwo.setVisible(true);
+               }
             }
         });
 
@@ -297,9 +317,30 @@ public class InsertPlayers extends javax.swing.JDialog {
         pack();
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    private void showError(int erro) {
+        String message;
+        switch(erro){
+            case 1:
+                //Number format 
+                message ="Please insert a name";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 2:
+                //all exception
+                message ="Number of player must be between 2 and 4";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 3:
+                //Invalid number of players
+                message ="Invalid quantity";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+            case 4:
+                message ="Player lost";
+                JOptionPane.showMessageDialog(this, message);
+            break;
+        } 
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

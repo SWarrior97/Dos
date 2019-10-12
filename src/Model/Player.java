@@ -12,9 +12,12 @@ package Model;
 public class Player {
     private String name;
     private int point;
+    private int wonGames;
 
     public Player(String name) {
         this.name = name;
+        this.point = 0;
+        this.wonGames = 0;
     }
 
     public String getName() {
@@ -31,6 +34,14 @@ public class Player {
 
     public void setPoint(int point) {
         this.point = point;
+    }
+
+    public int getWonGames() {
+        return wonGames;
+    }
+
+    public void setWonGames(int wonGames) {
+        this.wonGames = wonGames;
     }
     
     
