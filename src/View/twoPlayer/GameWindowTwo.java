@@ -8,7 +8,12 @@ package View.twoPlayer;
 import Model.AppManager;
 import Model.Player;
 import View.AddPointWindow;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,6 +21,21 @@ import javax.swing.JOptionPane;
  */
 public class GameWindowTwo extends javax.swing.JDialog {
     private java.awt.Frame parent;
+    private int numberOfPlayers;
+    
+    //TWO PLAYER
+    JLabel lblPlayer1 = new javax.swing.JLabel();
+    JLabel lblPlayer2 = new javax.swing.JLabel();
+    JButton jButton1 = new javax.swing.JButton();
+    JTextField txtPointPlayer2 = new javax.swing.JTextField();
+    JTextField txtPointPlayer1 = new javax.swing.JTextField();
+    JButton jButton2 = new javax.swing.JButton();
+    JLabel jLabel1 = new javax.swing.JLabel();
+    JLabel jLabel2 = new javax.swing.JLabel();
+    JTextField txtWonGamesPlayer1 = new javax.swing.JTextField();
+    JTextField txtWonGamesPlayer2 = new javax.swing.JTextField();
+    
+    
     /**
      * Creates new form gameWindow
      */
@@ -24,6 +44,14 @@ public class GameWindowTwo extends javax.swing.JDialog {
         initComponents();
         this.parent = parent;
         init();
+    }
+
+    public GameWindowTwo(Frame parent, boolean modal, int numberOfPlayers) {
+       super(parent, modal);
+       initComponents();
+       this.parent = parent;
+       this.numberOfPlayers = numberOfPlayers;
+       init();
     }
 
     /**
@@ -35,17 +63,78 @@ public class GameWindowTwo extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblPlayer1 = new javax.swing.JLabel();
-        lblPlayer2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txtPointPlayer2 = new javax.swing.JTextField();
-        txtPointPlayer1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtWonGamesPlayer1 = new javax.swing.JTextField();
-        txtWonGamesPlayer2 = new javax.swing.JTextField();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 249, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @param args the command line arguments
+     */
+   
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+
+    private void init() {
+       atualizarFields();
+        switch(numberOfPlayers){
+            case 2:
+                twoPlayer();
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+        }
+    }
+    
+    public void verificarVitoria(){
+        for(Player p:AppManager.INSTANCE.getPlayers()){
+            if(p.getPoint() >= 200){
+                showVitory(p);
+            }
+        }
+    }
+
+    private void showVitory(Player p) {
+        String message =p.getName() + " wins the game";
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    public void atualizarFields() {
+        switch(numberOfPlayers){
+            case 2:
+                lblPlayer1.setText(AppManager.INSTANCE.getPlayers(0).getName());
+                lblPlayer2.setText(AppManager.INSTANCE.getPlayers(1).getName());
+
+                txtPointPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getPoint()));
+                txtPointPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getPoint()));
+
+                txtWonGamesPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getWonGames()));
+                txtWonGamesPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getWonGames()));
+            break;
+            case 3:
+            break;
+            case 4:
+            break;
+        }
+        
+        
+    }
+
+    private void twoPlayer() {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblPlayer1.setText("jLabel1");
@@ -67,6 +156,10 @@ public class GameWindowTwo extends javax.swing.JDialog {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+
+            private void jButton2ActionPerformed(ActionEvent evt) {
+                System.exit(0);
             }
         });
 
@@ -132,62 +225,12 @@ public class GameWindowTwo extends javax.swing.JDialog {
                     .addComponent(jButton2))
                 .addContainerGap())
         );
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AddPointWindow window = new AddPointWindow(parent,true,this);
-        window.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-   
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblPlayer1;
-    private javax.swing.JLabel lblPlayer2;
-    private javax.swing.JTextField txtPointPlayer1;
-    private javax.swing.JTextField txtPointPlayer2;
-    private javax.swing.JTextField txtWonGamesPlayer1;
-    private javax.swing.JTextField txtWonGamesPlayer2;
-    // End of variables declaration//GEN-END:variables
-
-    private void init() {
-       lblPlayer1.setText(AppManager.INSTANCE.getPlayers(0).getName());
-       lblPlayer2.setText(AppManager.INSTANCE.getPlayers(1).getName());
-       
-       txtPointPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getPoint()));
-       txtPointPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getPoint()));
-       
-       txtWonGamesPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getWonGames()));
-       txtWonGamesPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getWonGames()));
     }
     
-    public void verificarVitoria(){
-        for(Player p:AppManager.INSTANCE.getPlayers()){
-            if(p.getPoint() >= 200){
-                showVitory(p);
-            }
-        }
-    }
-
-    private void showVitory(Player p) {
-        String message =p.getName() + " wins the game";
-        JOptionPane.showMessageDialog(this, message);
-    }
-
-    public void atualizarFields() {
-        init();
+    private void jButton1ActionPerformed(ActionEvent evt) {
+        //Add Point
+        AddPointWindow window = new AddPointWindow(parent, true, this);
+        window.setVisible(true);
     }
 }

@@ -103,7 +103,7 @@ public class InsertPlayers extends javax.swing.JDialog {
                    AppManager.INSTANCE.addPlayer(player1);
                    AppManager.INSTANCE.addPlayer(player2);
                    
-                   GameWindowTwo windowTwo = new GameWindowTwo(parent, true);
+                   GameWindowTwo windowTwo = new GameWindowTwo(parent, true,numberOfPlayers);
                    windowTwo.setVisible(true);
                }
             }
