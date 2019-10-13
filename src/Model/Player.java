@@ -43,6 +43,11 @@ public class Player {
     public void setWonGames(int wonGames) {
         this.wonGames = wonGames;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
     
     
     

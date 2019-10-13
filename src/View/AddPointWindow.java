@@ -5,9 +5,11 @@
  */
 package View;
 
+import Model.AppManager;
 import Model.Player;
 import View.twoPlayer.GameWindowTwo;
 import java.awt.Frame;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +26,7 @@ public class AddPointWindow extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.parent = parent;
+        init();
     }
 
     public AddPointWindow(Frame parent, boolean modal, GameWindowTwo window) {
@@ -31,6 +34,7 @@ public class AddPointWindow extends javax.swing.JDialog {
        initComponents();
        this.parent = parent;
        this.window = window;
+       init();
     }
 
     /**
@@ -126,6 +130,7 @@ public class AddPointWindow extends javax.swing.JDialog {
             int point = Integer.parseInt(insertText);
             
             p.setPoint(p.getPoint() + point);
+            p.setWonGames(p.getWonGames() +1);
             window.atualizarFields();
             window.verificarVitoria();
             closeWindow();
@@ -171,5 +176,9 @@ public class AddPointWindow extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, message);
             break;
         } 
+    }
+
+    private void init() {
+        cbPlayers.setModel(new DefaultComboBoxModel(AppManager.INSTANCE.getPlayers().toArray()));
     }
 }

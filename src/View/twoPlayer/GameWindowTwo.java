@@ -183,7 +183,7 @@ public class GameWindowTwo extends javax.swing.JDialog {
     }
 
     private void showVitory(Player p) {
-        String message =p.getName() + "wins the game";
+        String message =p.getName() + " wins the game";
         JOptionPane.showMessageDialog(this, message);
     }
 
