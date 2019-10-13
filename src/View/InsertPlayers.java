@@ -167,7 +167,24 @@ public class InsertPlayers extends javax.swing.JDialog {
             }
 
             private void jButton1ActionPerformed(ActionEvent evt) {
+               String player1name = txtPlayer1Three.getText();
+               String player2name = txtPlayer2Three.getText();
+               String player3name = txtPlayer3Three.getText();
                
+               if(player1name.isEmpty() || player2name.isEmpty() || player3name.isEmpty()){
+                   showError(1);
+               }else{
+                   Player player1 = new Player(player1name);
+                   Player player2= new Player(player2name);
+                   Player player3 = new Player(player3name);
+                   
+                   AppManager.INSTANCE.addPlayer(player1);
+                   AppManager.INSTANCE.addPlayer(player2);
+                   AppManager.INSTANCE.addPlayer(player3);
+                   
+                   GameWindowTwo windowTwo = new GameWindowTwo(parent, true,numberOfPlayers);
+                   windowTwo.setVisible(true);
+               }
             }
         });
 
@@ -247,7 +264,27 @@ public class InsertPlayers extends javax.swing.JDialog {
             }
 
             private void jButton1ActionPerformed(ActionEvent evt) {
-                
+               String player1name = txtPlayer1Four.getText();
+               String player2name = txtPlayer2Four.getText();
+               String player3name = txtPlayer3Four.getText();
+                String player4name = txtPlayer4Four.getText();
+               
+               if(player1name.isEmpty() || player2name.isEmpty() || player3name.isEmpty() || player4name.isEmpty()){
+                   showError(1);
+               }else{
+                   Player player1 = new Player(player1name);
+                   Player player2= new Player(player2name);
+                   Player player3 = new Player(player3name);
+                   Player player4 = new Player(player4name);
+                   
+                   AppManager.INSTANCE.addPlayer(player1);
+                   AppManager.INSTANCE.addPlayer(player2);
+                   AppManager.INSTANCE.addPlayer(player3);
+                    AppManager.INSTANCE.addPlayer(player4);
+                   
+                   GameWindowTwo windowTwo = new GameWindowTwo(parent, true,numberOfPlayers);
+                   windowTwo.setVisible(true);
+               }
             }
         });
 

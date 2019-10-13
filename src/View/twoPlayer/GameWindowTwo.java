@@ -23,7 +23,7 @@ public class GameWindowTwo extends javax.swing.JDialog {
     private java.awt.Frame parent;
     private int numberOfPlayers;
     
-    //TWO PLAYER
+    //COMPONENTS
     JLabel lblPlayer1 = new javax.swing.JLabel();
     JLabel lblPlayer2 = new javax.swing.JLabel();
     JButton jButton1 = new javax.swing.JButton();
@@ -34,6 +34,12 @@ public class GameWindowTwo extends javax.swing.JDialog {
     JLabel jLabel2 = new javax.swing.JLabel();
     JTextField txtWonGamesPlayer1 = new javax.swing.JTextField();
     JTextField txtWonGamesPlayer2 = new javax.swing.JTextField();
+    JLabel lblPlayer3 = new javax.swing.JLabel();
+    JTextField txtPointPlayer3 = new javax.swing.JTextField();
+    JTextField txtWonGamesPlayer3 = new javax.swing.JTextField();
+    JLabel lblPlayer4 = new javax.swing.JLabel();
+    JTextField txtPointPlayer4 = new javax.swing.JTextField();
+    JTextField txtWonGamesPlayer4 = new javax.swing.JTextField();
     
     
     /**
@@ -94,8 +100,10 @@ public class GameWindowTwo extends javax.swing.JDialog {
                 twoPlayer();
             break;
             case 3:
+                threePlayers();
             break;
             case 4:
+                fourPlayers();
             break;
         }
     }
@@ -126,8 +134,33 @@ public class GameWindowTwo extends javax.swing.JDialog {
                 txtWonGamesPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getWonGames()));
             break;
             case 3:
+                lblPlayer1.setText(AppManager.INSTANCE.getPlayers(0).getName());
+                lblPlayer2.setText(AppManager.INSTANCE.getPlayers(1).getName());
+                lblPlayer3.setText(AppManager.INSTANCE.getPlayers(2).getName());
+
+                txtPointPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getPoint()));
+                txtPointPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getPoint()));
+                txtPointPlayer3.setText(String.valueOf(AppManager.INSTANCE.getPlayers(2).getPoint()));
+
+                txtWonGamesPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getWonGames()));
+                txtWonGamesPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getWonGames()));
+                txtWonGamesPlayer3.setText(String.valueOf(AppManager.INSTANCE.getPlayers(2).getWonGames()));
             break;
             case 4:
+                lblPlayer1.setText(AppManager.INSTANCE.getPlayers(0).getName());
+                lblPlayer2.setText(AppManager.INSTANCE.getPlayers(1).getName());
+                lblPlayer3.setText(AppManager.INSTANCE.getPlayers(2).getName());
+                lblPlayer4.setText(AppManager.INSTANCE.getPlayers(3).getName());
+
+                txtPointPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getPoint()));
+                txtPointPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getPoint()));
+                txtPointPlayer3.setText(String.valueOf(AppManager.INSTANCE.getPlayers(2).getPoint()));
+                txtPointPlayer4.setText(String.valueOf(AppManager.INSTANCE.getPlayers(3).getPoint()));
+
+                txtWonGamesPlayer1.setText(String.valueOf(AppManager.INSTANCE.getPlayers(0).getWonGames()));
+                txtWonGamesPlayer2.setText(String.valueOf(AppManager.INSTANCE.getPlayers(1).getWonGames()));
+                txtWonGamesPlayer3.setText(String.valueOf(AppManager.INSTANCE.getPlayers(2).getWonGames()));
+                txtWonGamesPlayer4.setText(String.valueOf(AppManager.INSTANCE.getPlayers(3).getWonGames()));
             break;
         }
         
@@ -137,9 +170,6 @@ public class GameWindowTwo extends javax.swing.JDialog {
     private void twoPlayer() {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblPlayer1.setText("jLabel1");
-
-        lblPlayer2.setText("jLabel2");
 
         jButton1.setText("Add Point");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,10 +186,6 @@ public class GameWindowTwo extends javax.swing.JDialog {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-
-            private void jButton2ActionPerformed(ActionEvent evt) {
-                System.exit(0);
             }
         });
 
@@ -232,5 +258,228 @@ public class GameWindowTwo extends javax.swing.JDialog {
         //Add Point
         AddPointWindow window = new AddPointWindow(parent, true, this);
         window.setVisible(true);
+    }
+
+    private void threePlayers() {
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+       
+
+        jButton1.setText("Add Point");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txtPointPlayer2.setEditable(false);
+
+        txtPointPlayer1.setEditable(false);
+
+        jButton2.setText("Finish");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+
+            
+        });
+
+        jLabel1.setText("Total Points:");
+
+        jLabel2.setText("Wons games:");
+
+        txtWonGamesPlayer1.setEditable(false);
+
+        txtWonGamesPlayer2.setEditable(false);
+
+        txtPointPlayer3.setEditable(false);
+
+        txtWonGamesPlayer3.setEditable(false);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 228, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlayer1)
+                            .addComponent(lblPlayer2)
+                            .addComponent(lblPlayer3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPointPlayer3)
+                            .addComponent(txtPointPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(txtPointPlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtWonGamesPlayer2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(txtWonGamesPlayer1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(txtWonGamesPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPointPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtWonGamesPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer2)
+                    .addComponent(txtPointPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer3)
+                    .addComponent(txtPointPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+
+        pack();
+    }
+    
+    private void jButton2ActionPerformed(ActionEvent evt) {
+        System.exit(0);
+    }
+
+    private void fourPlayers() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+
+        jButton1.setText("Add Point");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txtPointPlayer2.setEditable(false);
+
+        txtPointPlayer1.setEditable(false);
+
+        jButton2.setText("Finish");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Total Points:");
+
+        jLabel2.setText("Wons games:");
+
+        txtWonGamesPlayer1.setEditable(false);
+
+        txtWonGamesPlayer2.setEditable(false);
+
+
+        txtPointPlayer3.setEditable(false);
+
+        txtWonGamesPlayer3.setEditable(false);
+
+        txtPointPlayer4.setEditable(false);
+
+        txtWonGamesPlayer4.setEditable(false);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 228, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlayer1)
+                            .addComponent(lblPlayer2)
+                            .addComponent(lblPlayer3)
+                            .addComponent(lblPlayer4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPointPlayer4)
+                            .addComponent(txtPointPlayer3)
+                            .addComponent(txtPointPlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                            .addComponent(txtPointPlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtWonGamesPlayer2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                            .addComponent(txtWonGamesPlayer1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(txtWonGamesPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPointPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtWonGamesPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer2)
+                    .addComponent(txtPointPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer3)
+                    .addComponent(txtPointPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPlayer4)
+                    .addComponent(txtPointPlayer4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWonGamesPlayer4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+
+        pack();
     }
 }
